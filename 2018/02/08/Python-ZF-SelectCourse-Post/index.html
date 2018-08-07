@@ -485,7 +485,7 @@ dpDataGrid2:txtChoosePage:1
 dpDataGrid2:txtPageSize:100
 </code></pre><p>其中 __VIEWSTATE 和 __VIEWSTATEGENERATOR两个参数是在页面源码里提取的 最丧心病狂的是__VIEWSTATE 差不多得有一万字符在里面…</p>
 <p>不过用 BeautifulSoup 可以很好地将他们提取出来</p>
-<pre><code class="python">
+<pre><code class="lang-python">
 def get__VIEWSTATE2(response):
     &#39;&#39;&#39;解析获得选课页面view函数&#39;&#39;&#39;
     html = response.content.decode(&quot;gbk&quot;)
@@ -496,7 +496,7 @@ def get__VIEWSTATE2(response):
 </code></pre>
 <p>具体的页面解析要具体分析 这里只是一个例子 不过都大同小异</p>
 <p>然后dpkcmcGrid:txtChoosePage这个参数是值选课页面的第几页<br> dpkcmcGrid:txtPageSize这个是每个页面显示的课程数(最大为100)</p>
-<p><strong>————–未完持续————</strong></p>
+<p><strong>———————未完持续——————</strong></p>
 
             
         </div>
@@ -512,6 +512,35 @@ def get__VIEWSTATE2(response):
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/02/08/Python-ZF-SelectCourse-Post/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/02/08/Python-ZF-SelectCourse-Post/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//steve02a.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
                 
             </div>
 
@@ -599,6 +628,9 @@ def get__VIEWSTATE2(response):
 
 
 
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//steve02a.disqus.com/count.js" async></script>
 
 
 

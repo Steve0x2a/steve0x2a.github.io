@@ -485,7 +485,7 @@
 <p><img src="https://i.loli.net/2017/12/13/5a312295ee321.png" alt="12-13-source2.png"></p>
 <p>原来 <code>lt</code>  <code>execution</code>两个值是每次加载页面都会改变的, 我们需要从源码里面获取这两个值作为参数.</p>
 <p>利用 Python 的 BeautifulSoup 可以简单获取 <code>lt</code>, <code>execution</code> 两个值 :</p>
-<pre><code class="python">def get_webflow(url):
+<pre><code class="lang-python">def get_webflow(url):
     response = self.session.get(url = url,headers = self.headers)
     soup = BeautifulSoup(response.text,&#39;html.parser&#39;)
     lt = soup.find(&#39;input&#39;,{&#39;name&#39; : &#39;lt&#39;})[&#39;value&#39;]#获取lt值
@@ -494,7 +494,7 @@
     return(lt,execution)
 </code></pre>
 <p>然后就可以利用获得的数值去构建post的内容了:</p>
-<pre><code class="python">    lt, execution = get_webflow(url)
+<pre><code class="lang-python">    lt, execution = get_webflow(url)
     postdata = {
         &#39;username&#39; : account,
         &#39;password&#39; : passwd,
@@ -509,7 +509,7 @@
 <p><img src="https://i.loli.net/2017/12/13/5a3127ef89741.png" alt="12-13-login.png"></p>
 <p>看到这个喜闻乐见的页面就代表我们登陆成功啦</p>
 <h1 id="Python3-代码"><a href="#Python3-代码" class="headerlink" title="Python3 代码"></a>Python3 代码</h1><p>一下是完整代码:</p>
-<pre><code class="python">import requests
+<pre><code class="lang-python">import requests
 from bs4 import BeautifulSoup
 import getpass #这个库可以让我们输密码的时候不展现在屏幕上
 
@@ -582,6 +582,35 @@ if __name__ == &#39;__main__&#39;:
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/12/13/Python-GZHU-jwlogin/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/12/13/Python-GZHU-jwlogin/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//steve02a.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
                 
             </div>
 
@@ -669,6 +698,9 @@ if __name__ == &#39;__main__&#39;:
 
 
 
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//steve02a.disqus.com/count.js" async></script>
 
 
 

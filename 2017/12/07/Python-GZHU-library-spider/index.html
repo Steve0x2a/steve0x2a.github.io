@@ -473,7 +473,7 @@
 <p>简单抓包后发现提交的数据如下:</p>
 <p><img src="https://i.loli.net/2017/12/13/5a312f280b7db.png" alt="12-7-library-post.png"></p>
 <p>所以就可以利用 Python 的 requests 进行简单的数据爬取了.</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="python">import json
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="lang-python">import json
 import requests
 import re
 from datetime import datetime,timedelta
@@ -568,6 +568,35 @@ if __name__ == &#39;__main__&#39;:
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/12/07/Python-GZHU-library-spider/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/12/07/Python-GZHU-library-spider/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//steve02a.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
                 
             </div>
 
@@ -655,6 +684,9 @@ if __name__ == &#39;__main__&#39;:
 
 
 
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//steve02a.disqus.com/count.js" async></script>
 
 
 

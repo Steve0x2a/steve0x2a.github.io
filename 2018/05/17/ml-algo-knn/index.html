@@ -489,7 +489,7 @@
 <p>Test set labels: t10k-labels-idx1-ubyte.gz (5KB, 解压后 10 KB, 包含 10,000 个标签)</p>
 <p>MNIST 数据集来自美国国家标准与技术研究所, National Institute of Standards and Technology (NIST). 训练集 (training set) 由来自 250 个不同人手写的数字构成, 其中 50% 是高中学生, 50% 来自人口普查局 (the Census Bureau) 的工作人员. 测试集(test set) 也是同样比例的手写数字数据.</p>
 <p>通常大家会使用cNN来对这个手写数据集来完成机器学习这个”hello world”级别的项目 不过我这里想说的是, 尽管最简单的kNN, 一样可以对这个问题进行求解.</p>
-<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><pre><code class="python">from collections import defaultdict
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><pre><code class="lang-python">from collections import defaultdict
 import struct #用作读取数据集
 import numpy as np#用作矩阵计算以及图像向量化
 
@@ -551,17 +551,17 @@ def read_label(file_path):
     return label_num
 </code></pre>
 <p>读取一下训练照片样本</p>
-<pre><code class="python">image_train_file_path=&quot;mnist/train-images.idx3-ubyte&quot;  
+<pre><code class="lang-python">image_train_file_path=&quot;mnist/train-images.idx3-ubyte&quot;  
 image_train_piexl = read_image(image_train_file_path)
 </code></pre>
 <p>读取测试样本</p>
-<pre><code class="python">image_test_file_path=&quot;mnist/t10k-images.idx3-ubyte&quot;  
+<pre><code class="lang-python">image_test_file_path=&quot;mnist/t10k-images.idx3-ubyte&quot;  
 label_test_file_path=&quot;mnist/t10k-labels.idx1-ubyte&quot; 
 image_test_piexl=read_image(image_test_file_path)  
 label_test=read_label(label_test_file_path)
 </code></pre>
 <p>图像向量化并计算距离值</p>
-<pre><code class="python">def calc_dis(train_image,test_image):  
+<pre><code class="lang-python">def calc_dis(train_image,test_image):  
     dist=np.linalg.norm(train_image-test_image)  
     return dist
 def find_labels(k,train_images,train_labels,test_image):  
@@ -600,12 +600,12 @@ def calc_precision(res,test_labels):
     return precision/len(res)
 </code></pre>
 <p>最后就可以直接使用这个算法去算一下我们的准确率了</p>
-<pre><code class="python">k=1
+<pre><code class="lang-python">k=1
 res=knn_all(k,image_train_piexl,label_train,image_test_piexl)  
 print(&quot;precision:&quot;+str(calc_precision(res,label_test)))
 </code></pre>
 <p>输出结果</p>
-<pre><code class="bash">start knn_all!
+<pre><code class="lang-bash">start knn_all!
 0 has been processed!
 1000 has been processed!
 2000 has been processed!
@@ -640,6 +640,35 @@ precision:0.9562
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/05/17/ml-algo-knn/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/05/17/ml-algo-knn/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//steve02a.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
                 
             </div>
 
@@ -727,6 +756,9 @@ precision:0.9562
 
 
 
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//steve02a.disqus.com/count.js" async></script>
 
 
 

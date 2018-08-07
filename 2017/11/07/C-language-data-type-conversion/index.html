@@ -482,13 +482,13 @@
 <p>但是后来发现百度知道上面的题目是int b =  -1 而作业里面是 short int = -1, -1也在short int 的范围内 应该不会溢出。</p>
 <p>但是还是举得自己的基础知识太薄弱，决定好好研究一下这个问题。</p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>先前了解到，计算机是用<a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html" target="_blank" rel="noopener">补码</a> 储存信息的。所以分析代码：</p>
-<pre><code class="c">unsigned short a;
+<pre><code class="lang-c">unsigned short a;
 short int b = -1;
 </code></pre>
 <p>定义了一个unsigned类型的a ，以及一个short类型的b 且赋予初值 -1.</p>
 <p>根据<a href="https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80#.E5.9F.BA.E7.A1.80.E6.95.B0.E6.8D.AE.E7.B1.BB.E5.9E.8B" target="_blank" rel="noopener">C语言的基础数据类型</a>可知 short int 类型大小为2bytes，则此时内存中b储存的数值为<code>1111 1111 1111 1111</code>（-1的补码）。</p>
 <p>下一步：</p>
-<pre><code class="c">a = b;
+<pre><code class="lang-c">a = b;
 </code></pre>
 <p>而C语言的赋值语句是将变量在内存中的数据赋值到另一个变量中而不考虑对应变量的数据类型的。</p>
 <p>引用 <a href="http://wdxtub.com/2016/04/16/thin-csapp-1/" target="_blank" rel="noopener">【不周山之读薄 CSAPP】壹 数据表示</a> 中一段话就是</p>
@@ -507,7 +507,7 @@ short int b = -1;
 <p>此时a 变量在内存中的数据依旧是 <code>1111 1111 1111 1111</code>。</p>
 <p>而a 的数据类型为unsigned short，大小依然是2bytes。a为无符号类型，则不用考虑第一位用作储存符号。则a =<code>1111 1111 1111 1111(2)</code>=  <code>65535(10)</code>。</p>
 <p>为了验证不是溢出等问题，稍作修改代码：</p>
-<pre><code class="C">int main(void)
+<pre><code class="lang-C">int main(void)
 {
     unsigned short a;
     short int b = -2;
@@ -519,7 +519,7 @@ short int b = -1;
 <p>此时输出的值为<code>65534</code></p>
 <p>-2 的补码为<code>1111 1111 1111 1110</code> 转换为unsigned short的a就是十进制的65534 故得证。</p>
 <h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>当代码改成这样时：</p>
-<pre><code class="C">int main(void)
+<pre><code class="lang-C">int main(void)
 {
     unsigned int a;
     int b = -1;
@@ -552,6 +552,35 @@ short int b = -1;
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/11/07/C-language-data-type-conversion/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/11/07/C-language-data-type-conversion/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//steve02a.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
                 
             </div>
 
@@ -639,6 +668,9 @@ short int b = -1;
 
 
 
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//steve02a.disqus.com/count.js" async></script>
 
 
 
